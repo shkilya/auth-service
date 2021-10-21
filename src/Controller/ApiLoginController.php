@@ -2,23 +2,20 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use App\DTO\Test;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+use FOS\RestBundle\Controller\Annotations\Get;
+use JetBrains\PhpStorm\Pure;
 
-
-class ApiLoginController extends AbstractController
+class ApiLoginController extends AbstractFOSRestController
 {
     public function __construct()
     {
     }
 
-    #[Route('/api/login', name: 'api_login')]
-    public function index(): Response
+    #[Pure] #[Get('test')]
+    public function index(): Test
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ApiLoginController.php',
-        ]);
+        return new Test( id:4,name: 'cxz');
     }
 }
